@@ -6,8 +6,8 @@ git branch merge의 방법에는 fast forward merge, commit merge, conflict merg
 1. Fast-Forward Merge
    가장 기본적인 merge. 현재 브랜치(main)의 head(commit)가 대상 브랜치(feature)의 head(commit)까지로 옮기는 merge이다.
 
-> git checkout main</br>
-> git merge feature
+> $ git checkout main</br>
+> $ git merge feature
 
 단, fast forward merge는 중간에 변경이 없을 때만 동작한다. 
 새로운 feature 브랜치가 main으로부터 분기된 이후 main 브랜치에 새로운 커밋이 올라오지 않았다면 feature 브랜치가 main 보다 최신의 브랜치라고 볼 수 있다.
@@ -19,9 +19,9 @@ git branch merge의 방법에는 fast forward merge, commit merge, conflict merg
    Squash는 여러개의 커밋을 하나의 커밋으로 합치는 것을 의미한다. feature 브랜치에서 작업한 커밋들을 하나의 원기옥으로 모아 딱 하나의 커밋으로 합치고 지움.
    따라서 Squash&Merge는 병합할 브핸치의 모든 커밋을 하나의 커밋으로 Squash한 새로운 커밋을 base브랜치에 추가하는 방식으로 병합하는 것을 의미한다.
 
-> git checkout main</br>
-> git merge --squash my-branch</br>
-> git commit -m "squash & merge"</br>
+> $ git checkout main</br>
+> $ git merge --squash my-branch</br>
+> $ git commit -m "squash & merge"</br>
 
 Squash & Merge는 커밋 로그가 깔끔해지고, 각 브랜치에서 한 작업들로 크게크게 커밋이 남아 가독성이 좋아지는 장점이 있지만, 기록이 남지않아 문제가 생기면 찾기 복잡해진다.
 
@@ -31,10 +31,10 @@ Squash & Merge는 커밋 로그가 깔끔해지고, 각 브랜치에서 한 작�
     이 때에 main브랜치로 feature 브랜치를 rebase & merge 하고자 하면 feature 브랜치는 main 브랜치의 최신 커밋, 즉 C 커밋으로 base(분기점)를 옮겨
     C 커밋에 붙여서 Merge 된다.
 
-> git checkout feature</br>
-> git rebase main => feature에 연결된 main브랜치로의 base를 re-base 한다.</br>
-> git checkout main</br>
-> git merge feature</br>
+> $ git checkout feature</br>
+> $ git rebase main => feature에 연결된 main브랜치로의 base를 re-base 한다.</br>
+> $ git checkout main</br>
+> $ git merge feature</br>
 
 보기에도 깔끔하고, 버전 관리에 용이하지만 conflict가 일어날 경우 rebase되어 merge 된 커밋들 각각에 하나씩 충돌이 발생하므로 한번에 많은 커밋을 merge 할 경우 conflict가 발생하면
 고치기 힘들다. force push를 해야하는 경우가 대부분이다.
